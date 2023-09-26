@@ -15,3 +15,4 @@ find_package(boost)
 
 # Schließen Sie Unterprojekte ein.
 add_subdirectory ("solid_principles") # chapter 1
+add_subdirectory ("builder") # chapter 2
