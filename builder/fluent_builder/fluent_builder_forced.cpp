@@ -12,7 +12,8 @@ using namespace boost;
 struct HtmlBuilder;
 
 // single responsability: modeling a HTML element
-struct HtmlElement {
+class HtmlElement {
+private: // not needed since it is the default on a class definition
 	// members
 	std::string _name, _text;
 	std::vector<HtmlElement> _elements;
@@ -23,6 +24,7 @@ struct HtmlElement {
 		_text(text),
 		_name(name)
 	{}
+public:
 	// methods
 	std::string str(std::size_t indent = 0)  const { // C++ fasion to get a string from an instance
 		std::ostringstream oss; // define output string buffer
@@ -46,16 +48,19 @@ struct HtmlElement {
 	}
 
 	// hint to the user that he should use the builder instead of the instance
-	static HtmlBuilder build(std::string rootName) { // Caution: this does not forbid to create an instance of HtmlElement on its own
+	static HtmlBuilder create(std::string rootName) { // Caution: this does not forbid to create an instance of HtmlElement on its own
 		return HtmlBuilder(rootName);
 	}
 
+	friend HtmlBuilder; // allow HtmlBuilder to access private members of HtmlElement
 };
 
 // single responsability: the HtmlBuilder is responsible to create a HtmlElement instance in the background and deliver an easy API for filling it up
-struct HtmlBuilder {
+class HtmlBuilder {
+private:
 	HtmlElement _root;
 
+public:
 	HtmlBuilder(std::string rootName) {
 		_root._name = rootName;
 	}
@@ -82,6 +87,12 @@ struct HtmlBuilder {
 	operator HtmlElement() const { // this defines the () operator of HtmlBuilder
 		return _root;
 	}
+
+	// make the root accessable after it is constructed by the builder
+	HtmlElement build() {
+		return _root;
+	}
+
 };
 
 int main()
@@ -92,11 +103,14 @@ int main()
 	std::cout << htmlBuilder.str() << std::endl;
 	
 	// HtmlElement construction with builder
-	HtmlBuilder builder2 = HtmlElement::build("ul").addChild("li", "Foo").addChild("li", "Bar");
+	HtmlBuilder builder2 = HtmlElement::create("ul").addChild("li", "Foo").addChild("li", "Bar");
 	std::cout << builder2.str() << std::endl;
 	
 	// build() with HtmlElement as return type
-	HtmlElement elem = HtmlElement::build("ul").addChild("li", "Hello World!");
+	HtmlElement elem = HtmlElement::create("ul").addChild("li", "Hello World!");
+
+	// not allowed - no constructor of HtmlElement is available so the user will check what methods he can use on the class (which needs to be static since we have no instance to operate on)
+	// HtmlElement elem;
 
 	return 0;
 }
