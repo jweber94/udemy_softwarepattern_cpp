@@ -14,4 +14,5 @@
     - Too many modi via optional params --> optional parameter hell
     - Too many parameters
 + Name of the constructor/class is not descriptive enough that the user of the class/user of the API does not get what he needs to insert to the parameters to get a valid instance of the class
+    - Because the constructor is determined/mandated by the class name
     - Then the factory(-method) is used to expose a more clearly explained (via parameter names and method names) API for the instanciation

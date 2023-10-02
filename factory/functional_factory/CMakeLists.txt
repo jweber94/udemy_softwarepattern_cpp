@@ -1,4 +1,4 @@
-add_executable (functional_factory "functional_factory.cpp")
+add_executable (functional_factory "main.cpp" "HotDrink.hpp" "HotDrinkFactory.hpp" "DrinkFactory.hpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET functional_factory PROPERTY CXX_STANDARD 20)

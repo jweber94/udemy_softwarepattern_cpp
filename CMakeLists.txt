@@ -14,5 +14,6 @@ project ("design_pattern_modern_cpp")
 find_package(boost)
 
 # Schließen Sie Unterprojekte ein.
-add_subdirectory ("solid_principles") # chapter 1
-add_subdirectory ("builder") # chapter 2
+add_subdirectory ("solid_principles")   # chapter 1
+add_subdirectory ("builder")            # chapter 2
+add_subdirectory ("factory")            # chapter 3
