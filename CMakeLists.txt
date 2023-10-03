@@ -17,3 +17,4 @@ find_package(boost)
 add_subdirectory ("solid_principles")   # chapter 1
 add_subdirectory ("builder")            # chapter 2
 add_subdirectory ("factory")            # chapter 3
+add_subdirectory ("prototype")          # chapter 4
