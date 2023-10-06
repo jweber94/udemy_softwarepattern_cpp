@@ -46,9 +46,9 @@ struct HtmlElement {
 	}
 
 	// hint to the user that he should use the builder instead of the instance
-	static HtmlBuilder build(std::string rootName) { // Caution: this does not forbid to create an instance of HtmlElement on its own
-		return HtmlBuilder(rootName);
-	}
+	static HtmlBuilder build(std::string rootName); // { // Caution: this does not forbid to create an instance of HtmlElement on its own
+	//	return HtmlBuilder(rootName);
+	//}
 
 };
 
@@ -83,6 +83,10 @@ struct HtmlBuilder {
 		return _root;
 	}
 };
+
+HtmlBuilder HtmlElement::build(std::string rootName) { // Caution: this does not forbid to create an instance of HtmlElement on its own
+	return HtmlBuilder(rootName);
+}
 
 int main()
 {

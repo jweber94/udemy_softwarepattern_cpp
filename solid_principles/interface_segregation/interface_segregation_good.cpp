@@ -67,7 +67,7 @@ int main()
     FaxMachine faxer;
     
     faxer.fax(myDoc);   // OK
-    faxer.scan(myDoc);  // Not OK
+    //faxer.scan(myDoc);  // Not OK
 
 	return 0;
 }

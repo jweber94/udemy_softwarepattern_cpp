@@ -48,9 +48,9 @@ public:
 	}
 
 	// hint to the user that he should use the builder instead of the instance
-	static HtmlBuilder create(std::string rootName) { // Caution: this does not forbid to create an instance of HtmlElement on its own
-		return HtmlBuilder(rootName);
-	}
+	static HtmlBuilder create(std::string rootName);// { // Caution: this does not forbid to create an instance of HtmlElement on its own
+	//	return HtmlBuilder(rootName);
+	//}
 
 	friend HtmlBuilder; // allow HtmlBuilder to access private members of HtmlElement
 };
@@ -94,6 +94,10 @@ public:
 	}
 
 };
+
+HtmlBuilder HtmlElement::create(std::string rootName) { // Caution: this does not forbid to create an instance of HtmlElement on its own
+	return HtmlBuilder(rootName);
+}
 
 int main()
 {

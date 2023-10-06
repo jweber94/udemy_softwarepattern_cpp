@@ -6,6 +6,11 @@
 #include <boost/lexical_cast.hpp>
 #include <cmath>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+
 using namespace std;
 using namespace boost;
 
@@ -32,6 +37,7 @@ class Point
 
 		friend std::ostream& operator << (std::ostream& os, Point p) {
 			os << "x = " << p._x << "; y = " << p._y;
+			return os;
 		}
 };
 

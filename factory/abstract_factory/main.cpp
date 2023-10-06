@@ -31,6 +31,6 @@ std::unique_ptr<HotDrink> make_drink(Drinks drink) {
 int main()
 {
 	std::unique_ptr<HotDrink> myDrink = make_drink(Drinks::tea); // plain use of API
-	std::unique_ptr<HotDrink> myDrink = DrinkFactory().make_drink(Drinks::coffee); // more concrete and more elegant way of using the API
+	std::unique_ptr<HotDrink> myDrink2 = DrinkFactory().make_drink(Drinks::coffee); // more concrete and more elegant way of using the API
 	return 0;
 }
