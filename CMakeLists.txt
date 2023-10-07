@@ -7,14 +7,18 @@ cmake_minimum_required (VERSION 3.8)
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
+  #(GTEST_ROOT "C:\\Program Files (x86)\\googletest-distribution")
+  #set(GTEST_INCLUDE_DIR "C:\\Program Files (x86)\\googletest-distribution\\include")
 endif()
 
 project ("design_pattern_modern_cpp")
 
-find_package(boost)
+find_package(boost REQUIRED)
+find_package(GTest REQUIRED)
 
 # Schließen Sie Unterprojekte ein.
 add_subdirectory ("solid_principles")   # chapter 1
 add_subdirectory ("builder")            # chapter 2
 add_subdirectory ("factory")            # chapter 3
 add_subdirectory ("prototype")          # chapter 4
+add_subdirectory("Singleton")			# chapter 5
