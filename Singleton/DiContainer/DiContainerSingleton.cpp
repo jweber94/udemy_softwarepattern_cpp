@@ -5,6 +5,7 @@
 #include <fstream>
 #include <map>
 #include <boost/lexical_cast.hpp>
+#include <boost/di.hpp>
 #include <gtest/gtest.h>
 
 using namespace std;

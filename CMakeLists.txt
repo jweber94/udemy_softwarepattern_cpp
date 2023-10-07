@@ -14,6 +14,7 @@ endif()
 project ("design_pattern_modern_cpp")
 
 find_package(boost REQUIRED)
+find_package(Threads REQUIRED)
 find_package(GTest REQUIRED)
 
 # Schließen Sie Unterprojekte ein.

@@ -13,8 +13,13 @@ using namespace boost;
 
 /* We want a database that exists only once in our application */
 
+class IDatabase {
+	public:
+		virtual int get_population(const std::string& city) = 0;
+};
+
 // The following class defines the singleton which we implemented to use it in our application/business logic
-class SingletonDatabase {
+class SingletonDatabase : public IDatabase {
 	private:
 		// private constructor is only called by the first time, the static get() function is called
 		SingletonDatabase() {
@@ -40,7 +45,7 @@ class SingletonDatabase {
 			return db;
 		}
 
-		int get_population(const std::string& city) {
+		int get_population(const std::string& city) override {
 			int pop{0};
 			try {
 				pop = _capitals.at(city);
@@ -52,23 +57,40 @@ class SingletonDatabase {
 		}
 };
 
+// dummy database to enable SingletonRecordFinder to be unit tested
+class DummyDatabase : public IDatabase {
+	public:
+		int get_population(const std::string& city) override {
+			return 42;
+		}
+};
+
+
 // this represents our application/business logic
 struct SingletonRecordFinder {
 	int total_population(std::vector<std::string> cities) {
 		int res{0};
 		for (auto& city : cities) {
-			res += SingletonDatabase::get().get_population(city);
+			res += _db->get_population(city);
 		}
 		return res;
 	};
+
+	SingletonRecordFinder(std::shared_ptr<IDatabase> pDb) :
+	_db(pDb)	
+	{}
+
+	private:
+		std::shared_ptr<IDatabase> _db;
 };
 
 // Here we want to test our application logic, that uses the singleton under the hood
 TEST(SingletonTest, IntegrationTest) {
 	// depends on the database
-	SingletonRecordFinder rf;
+	std::shared_ptr<DummyDatabase> testDb = std::make_shared<DummyDatabase>();
+	SingletonRecordFinder rf(testDb);
 	std::vector<std::string> cities {"Tokyo", "New York"}; // To prepare the test, we need to have knowlage about the database - this is not good unit test practice
-	EXPECT_EQ((33200000 + 17800000), rf.total_population(cities)); // We need to have up-to-date values of the database that we have under to hood to have a valid number to test against - maybe the number of (in our example) inhabitants vary over time and this would invalidate the test
+	EXPECT_EQ((2*42), rf.total_population(cities)); // We need to have up-to-date values of the database that we have under to hood to have a valid number to test against - maybe the number of (in our example) inhabitants vary over time and this would invalidate the test
 	/* The problem with this test is that we depend hardly on the database that is accessed via the singleton. Therefor we have implemented an integration test instead of an unit test for SingletonRecordFinder */
 }
 
