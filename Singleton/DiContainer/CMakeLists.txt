@@ -1,4 +1,4 @@
-add_executable (DiContainerSingleton "DiContainerSingleton.cpp")
+add_executable (DiContainerSingleton "DiContainerSingleton.cpp" "di.hpp")
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

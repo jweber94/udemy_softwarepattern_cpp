@@ -5,77 +5,46 @@
 #include <fstream>
 #include <map>
 #include <boost/lexical_cast.hpp>
-#include <boost/di.hpp>
-#include <gtest/gtest.h>
+#include "di.hpp"
 
 using namespace std;
 using namespace boost;
 
-
-/* We want a database that exists only once in our application */
-
-// The following class defines the singleton which we implemented to use it in our application/business logic
-class SingletonDatabase {
-	private:
-		// private constructor is only called by the first time, the static get() function is called
-		SingletonDatabase() {
-			std::cout << "Initializing database" << std::endl;
-			std::ifstream ifs("/home/jens/Desktop/udemy/udemy_softwarepattern_cpp/Singleton/Singleton/capitals.txt");
-			std::string s, s2;
-			while (getline(ifs, s)) { 	// name
-				getline(ifs, s2);		// number
-				int population = std::stoi(s2);
-				_capitals.insert({s, population});
-			}
-		}
-	
-		std::map<std::string, int> _capitals;
-
-	public:
-		// avoid creating copied of our singleton
-		SingletonDatabase(SingletonDatabase const&) = delete;
-		void operator=(SingletonDatabase const&) = delete;
-
-		static SingletonDatabase& get() {
-			static SingletonDatabase db;
-			return db;
-		}
-
-		int get_population(const std::string& city) {
-			int pop{0};
-			try {
-				pop = _capitals.at(city);
-			} catch (...) {
-				std::cerr << "There is no city called " << city << std::endl;
-				pop = -1;
-			}
-			return pop;
-		}
+struct IFoo {
+	virtual std::string name() = 0;
 };
 
-// this represents our application/business logic
-struct SingletonRecordFinder {
-	int total_population(std::vector<std::string> cities) {
-		int res{0};
-		for (auto& city : cities) {
-			res += SingletonDatabase::get().get_population(city);
-		}
-		return res;
-	};
+struct Foo : public IFoo {
+	static int _id;
+
+	Foo() 
+	{
+		++_id;
+	}
+
+	std::string name() override {
+		return "foo"s + boost::lexical_cast<std::string>(_id);
+	}
 };
 
-// Here we want to test our application logic, that uses the singleton under the hood
-TEST(SingletonTest, IntegrationTest) {
-	// depends on the database
-	SingletonRecordFinder rf;
-	std::vector<std::string> cities {"Tokyo", "New York"}; // To prepare the test, we need to have knowlage about the database - this is not good unit test practice
-	EXPECT_EQ((33200000 + 17800000), rf.total_population(cities)); // We need to have up-to-date values of the database that we have under to hood to have a valid number to test against - maybe the number of (in our example) inhabitants vary over time and this would invalidate the test
-	/* The problem with this test is that we depend hardly on the database that is accessed via the singleton. Therefor we have implemented an integration test instead of an unit test for SingletonRecordFinder */
-}
+int Foo::_id{0}; // We need to initialize static members outside of the class that contains it - if not we get an "undefined reference"
+
+struct Bar {
+	std::shared_ptr<IFoo> _pFoo;
+}; // constructor is Bar(std::shared_ptr<IFoo>) on default
+
 
 int main(int argc, char* argv[])
 {
-	testing::InitGoogleTest(&argc, argv);
-	RUN_ALL_TESTS();
+	auto injector = boost::di::make_injector(
+		boost::di::bind<IFoo>().to<Foo>().in(boost::di::singleton));
+		// With the dependency injection framework boost::di we can define the lifetime as a singleton without writing the singleton code ourselfs
+		// That enables a better testability of the users of our singleton, since we can inject dummy singletons/no singletons in case of a unit test (which we have done manually in the last tutortial)
+	
+	std::shared_ptr<Bar> bar1 = injector.create<std::shared_ptr<Bar>>();
+	std::shared_ptr<Bar> bar2 = injector.create<std::shared_ptr<Bar>>();
+
+
+	std::cout << boolalpha << (bar1->_pFoo.get() == bar2->_pFoo.get()) << std::endl;
 	return 0;
 }

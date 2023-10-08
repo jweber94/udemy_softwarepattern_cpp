@@ -1,2 +1,4 @@
 add_subdirectory(Singleton)
 add_subdirectory(DependencyInjectionSingleton)
+add_subdirectory(DiContainer)
+add_subdirectory(Monostate)
