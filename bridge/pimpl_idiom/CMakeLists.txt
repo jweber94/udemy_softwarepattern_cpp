@@ -1,4 +1,4 @@
-add_executable (pimpl_ideom "pimpl_ideom.cpp")
+add_executable (pimpl_ideom "Person.hpp" "Person.cpp" "main.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET pimpl_ideom PROPERTY CXX_STANDARD 20)
