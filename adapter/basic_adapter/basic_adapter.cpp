@@ -52,6 +52,7 @@ struct VectorRectangle : public VectorObject {
 /* this is the actual adapter pattern */  
 struct LineToPointAdapter {
     LineToPointAdapter(Line& line) {
+        // here comes the recalculation part of the adapter (= this example is not just a remapping but a mathmatical recalculation from the given API to the targeted API)
         static int count = 0;
         std::cout << count++ << "Generating points for line (no caching)\n" << std::endl; 
     

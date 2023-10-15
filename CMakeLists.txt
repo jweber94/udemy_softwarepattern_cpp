@@ -26,3 +26,4 @@ add_subdirectory ("prototype")          # chapter 4
 add_subdirectory("Singleton")			      # chapter 5
 ## structural pattern
 add_subdirectory("adapter")             # chapter 6
+add_subdirectory("bridge")				# chapter 7
