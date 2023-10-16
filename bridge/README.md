@@ -50,3 +50,4 @@ Thread Scheduler
 + Mostly done by handing over references to interfaces of the implementations
 	- Therefore a brige is a combination of dependency injection combined with abstract base classes
 + Sometimes a pimpl idiom is used to vary implementations without the need to recompile and in order to hide concrete implementations from the user of an API (mostly done if you build and sell a library but you do not want the customer to have the full source code)
++ If you insert an abstaction by reference, you are building a bridge
