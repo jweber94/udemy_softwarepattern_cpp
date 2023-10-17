@@ -1,4 +1,4 @@
-add_executable (observer_and_observable "observer_and_observable.cpp")
+add_executable (observer_and_observable "observer_and_observable.cpp" "observer.hpp" "observable.hpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET observer_and_observable PROPERTY CXX_STANDARD 20)

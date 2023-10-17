@@ -27,3 +27,5 @@ add_subdirectory("Singleton")			      # chapter 5
 ## structural pattern
 add_subdirectory("adapter")             # chapter 6
 add_subdirectory("bridge")				# chapter 7
+## behavioural pattern
+add_subdirectory("observer")			# TODO
