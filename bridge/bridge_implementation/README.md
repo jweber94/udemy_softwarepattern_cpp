@@ -1,2 +1,3 @@
 # Bridge Implementation
-+ TODO
++ A bridge is basically an abstract class which is a parameter by reference to a constructor where the bridge is used as the reference to the abstract base class but we handed over a differenciation of the abstract base class which corresponds to different behaviour
+	- Then we don't need to implement the same functionallity that is implemented/defined by the abstract base class for every differenciation where we use the bridge over and over again
