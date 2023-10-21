@@ -1,1 +1,5 @@
-add_subdirectory("observer_and_observable")
+#add_subdirectory("observer_and_observable")
+#add_subdirectory("observer_with_boost_signal2")
+#add_subdirectory("dependencies")
+#add_subdirectory("thread_safe_observer")
+add_subdirectory("homework")

@@ -1,4 +1,4 @@
-add_executable (observer_and_dependencies "dependencies.cpp")
+add_executable (observer_and_dependencies "dependencies.cpp" "Observer.hpp" "Observable.hpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET observer_and_dependencies PROPERTY CXX_STANDARD 20)

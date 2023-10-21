@@ -28,4 +28,4 @@ add_subdirectory("Singleton")			      # chapter 5
 add_subdirectory("adapter")             # chapter 6
 add_subdirectory("bridge")				# chapter 7
 ## behavioural pattern
-add_subdirectory("observer")			# TODO
+add_subdirectory("observer")			# Does not compile under windows due to a memory.h issue
