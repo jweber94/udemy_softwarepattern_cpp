@@ -16,4 +16,5 @@
 		* Restart Visual Studio --> Now boost will be found by cmake within your visual studio
 		* Alternatively do the following with `setx`: https://stackoverflow.com/questions/5898131/set-a-persistent-environment-variable-from-cmd-exe
 
-# TODO
+# TODOs
++ Reimplement the observer pattern homework with the generic approach instead of limiting it to the concrete implementation
