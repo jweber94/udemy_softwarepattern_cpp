@@ -18,3 +18,4 @@
 
 # TODOs
 + Reimplement the observer pattern homework with the generic approach instead of limiting it to the concrete implementation
++ Composite Homework again with CRTP
