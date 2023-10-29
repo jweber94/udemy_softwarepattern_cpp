@@ -13,7 +13,7 @@ endif()
 
 project ("design_pattern_modern_cpp")
 
-find_package(boost REQUIRED)
+find_package(Boost REQUIRED)
 find_package(Threads REQUIRED)
 find_package(GTest REQUIRED)
 
@@ -26,7 +26,8 @@ add_subdirectory ("prototype")          # chapter 4
 add_subdirectory("Singleton")			      # chapter 5
 ## structural pattern
 add_subdirectory("adapter")             # chapter 6
-add_subdirectory("bridge")				# chapter 7
-add_subdirectory("composite")			# chapter 8
+add_subdirectory("bridge")				      # chapter 7
+add_subdirectory("composite")			      # chapter 8
+add_subdirectory("decorator")           # chapter 9
 ## behavioural pattern
 add_subdirectory("observer")			# Does not compile under windows due to a memory.h issue

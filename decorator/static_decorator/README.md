@@ -1,0 +1,2 @@
+# Static Decorator
++ TODO
