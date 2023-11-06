@@ -8,3 +8,4 @@ target_include_directories(static_decorator PUBLIC ${Boost_INCLUDE_DIRS})
 target_link_libraries(static_decorator ${Boost_LIBRARIES})
 
 add_subdirectory("concepts")
+add_subdirectory("traits_classes")
