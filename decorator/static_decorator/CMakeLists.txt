@@ -9,3 +9,5 @@ target_link_libraries(static_decorator ${Boost_LIBRARIES})
 
 add_subdirectory("concepts")
 add_subdirectory("traits_classes")
+add_subdirectory("SFINAE")
+add_subdirectory("perfect_forwarding")

@@ -28,3 +28,28 @@
         - This is partly what the more efficient code is about, if you are using traits classes
         - This is the `_is_arithmetic_trait` example in the code is doing
 + Also `typedef`s can be done within traits classes to have them available within other definitions
+
+## Traits classes from the STL
++ There are some traits classes within the STL that can be used in your code
+    - These are defined within the header `#include <type_traits>`
++ Most commonly used traits are:
+```
+    std::is_integral: Überprüft, ob ein Typ eine ganze Zahl ist.
+    std::is_floating_point: Überprüft, ob ein Typ ein Fließkommazahlentyp ist.
+    std::is_array: Überprüft, ob ein Typ ein Array ist.
+    std::is_pointer: Überprüft, ob ein Typ ein Zeiger ist.
+    std::is_reference: Überprüft, ob ein Typ eine Referenz ist.
+    std::is_enum: Überprüft, ob ein Typ ein Enumerationstyp ist.
+    std::is_class: Überprüft, ob ein Typ eine Klassentyp ist.
+    std::is_function: Überprüft, ob ein Typ ein Funktionszeiger ist.
+    std::is_same: Überprüft, ob zwei Typen identisch sind.
+    std::is_base_of: Überprüft, ob eine Klasse eine andere Klasse abgeleitet ist.
+    std::is_convertible: Überprüft, ob ein Typ in einen anderen Typ konvertiert werden kann.
+    std::is_empty: Überprüft, ob eine Klasse leer (keine Datenmitglieder) ist.
+    std::is_union: Überprüft, ob ein Typ eine Vereinigung ist.
+    std::is_trivial: Überprüft, ob ein Typ ein trivialer Typ ist.
+    std::is_pod: Überprüft, ob ein Typ ein Plain Old Data (POD) ist.
+    std::is_arithmetic: Überprüft, ob ein Typ ein arithmetischer Typ (int, float, usw.) ist.
+    std::is_member_function_pointer: Überprüft, ob ein Typ ein Memberfunktionszeiger ist.
+    std::is_member_object_pointer: Überprüft, ob ein Typ ein Memberdatenzeiger ist.
+```
