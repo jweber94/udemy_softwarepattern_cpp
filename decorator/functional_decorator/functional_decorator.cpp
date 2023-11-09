@@ -8,7 +8,7 @@
 using namespace std;
 using namespace boost;
 
-
+/* Functional decorator that can decorate a specific function signature */
 struct Logger {
 	std::function<void()> _func;
 	std::string _name;
@@ -24,6 +24,7 @@ struct Logger {
 	}	
 };
 
+/* Functional decorator that can decorate a function that has arbitrary input arguments but a no (void) return value */
 template <typename Func>
 struct Logger2 {
 	Func _func;
@@ -56,7 +57,7 @@ double add(double a, double b) {
 template <typename>
 struct Logger3;
 
-template <typename R, typename ...Args>
+template <typename R, typename ...Args> // R is the return value of the handed over function and ...Args the parameters of the function that we want to wrap with the functional decorator
 struct Logger3<R(Args...)> {
 	std::function<R(Args...)> _func;
 	std::string _name;
@@ -74,6 +75,7 @@ struct Logger3<R(Args...)> {
 	}
 };
 
+// avoid specifying template arguments - the compiler can do type deduction with this factory function
 template <typename R, typename... Args>
 auto make_logger3(R (*func)(Args...), const std::string& name) {
 	return Logger3<R(Args...)>(
@@ -96,6 +98,6 @@ int main()
 	// Decorator with decorated function with return values
 	auto logged_add = make_logger3(add, "Add");
 	auto result = logged_add(1, 2); // invoke the decorated function
-
+	std::cout << "result from 3 is: " << result << std::endl;
 	return 0;
  }

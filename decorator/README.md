@@ -1,6 +1,6 @@
 # Decorator Pattern
 + Basic Idea: ***Adding functionallity to classes without adding code to them***
-    - But via inheritance strategies
+    - But via inheritance strategies or function pointers (in case of functional decorators)
     - Preserve the open close pinciples
     - Preserve single responsability principle
         * The added functionallity might be viewed as a separate concern
