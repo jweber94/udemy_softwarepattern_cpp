@@ -6,3 +6,5 @@ endif()
 
 target_include_directories(property_proxy PUBLIC ${Boost_INCLUDE_DIRS})
 target_link_libraries(property_proxy ${Boost_LIBRARIES})
+
+add_subdirectory("practical_example")
