@@ -33,4 +33,5 @@ add_subdirectory("decorator")           # chapter 9
 add_subdirectory("flyweight")			# chapter 11
 add_subdirectory("proxy")				# chapter 12
 ## behavioural pattern
+add_subdirectory("chain_of_responsability") # chapter 13
 add_subdirectory("observer")			# Does not compile under windows due to a memory.h issue
