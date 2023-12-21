@@ -18,20 +18,21 @@ find_package(Threads REQUIRED)
 find_package(GTest REQUIRED)
 
 # Basics
-add_subdirectory ("solid_principles")   # chapter 1
+add_subdirectory ("solid_principles")		# chapter 1
 ## creational pattern
-add_subdirectory ("builder")            # chapter 2
-add_subdirectory ("factory")            # chapter 3
-add_subdirectory ("prototype")          # chapter 4
-add_subdirectory("Singleton")			# chapter 5
+add_subdirectory ("builder")				# chapter 2
+add_subdirectory ("factory")				# chapter 3
+add_subdirectory ("prototype")				# chapter 4
+add_subdirectory("Singleton")				# chapter 5
 ## structural pattern
-add_subdirectory("adapter")             # chapter 6
-add_subdirectory("bridge")				# chapter 7
-add_subdirectory("composite")			# chapter 8
-add_subdirectory("decorator")           # chapter 9
+add_subdirectory("adapter")					# chapter 6
+add_subdirectory("bridge")					# chapter 7
+add_subdirectory("composite")				# chapter 8
+add_subdirectory("decorator")				# chapter 9
 #("facade")				# chapter 10
-add_subdirectory("flyweight")			# chapter 11
-add_subdirectory("proxy")				# chapter 12
+add_subdirectory("flyweight")				# chapter 11
+add_subdirectory("proxy")					# chapter 12
 ## behavioural pattern
 add_subdirectory("chain_of_responsability") # chapter 13
-add_subdirectory("observer")			# Does not compile under windows due to a memory.h issue
+add_subdirectory("command")					# chapter 14
+add_subdirectory("observer")				# chapter X - Does not compile under windows due to a memory.h issue

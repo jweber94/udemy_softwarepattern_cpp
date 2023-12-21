@@ -1,4 +1,5 @@
 # Chain of Responsability
++ The chain of responsability is a behavioural design pattern
 + Main goal: ***Let a sequence of components process some information one after another***
 + The chain of responsability is a sequence of handlers that are used to process an event one after another
 + Within the programm, a chain (mostly a pointer chain in a singlely linked list or something like that) of event handlers is defined. Be careful: The order of the chain members are crucial to the correct functioning!
