@@ -35,4 +35,5 @@ add_subdirectory("proxy")					# chapter 12
 ## behavioural pattern
 add_subdirectory("chain_of_responsability") # chapter 13
 add_subdirectory("command")					# chapter 14
+add_subdirectory("interpreter")				# chapter 15
 add_subdirectory("observer")				# chapter X - Does not compile under windows due to a memory.h issue
