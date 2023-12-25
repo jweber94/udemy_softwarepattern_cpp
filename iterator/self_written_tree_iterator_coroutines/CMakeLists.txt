@@ -6,3 +6,5 @@ endif()
 
 target_include_directories(self_written_tree_iterator_coroutines PUBLIC ${Boost_INCLUDE_DIRS})
 target_link_libraries(self_written_tree_iterator_coroutines ${Boost_LIBRARIES})
+
+add_subdirectory("coroutines_explained")
