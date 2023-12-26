@@ -1,5 +1,5 @@
 add_subdirectory("boost_iterator_facade")
 add_subdirectory("iterator_homework")
 add_subdirectory("self_written_tree_iterator")
-add_subdirectory("self_written_tree_iterator_coroutines")
+#add_subdirectory("self_written_tree_iterator_coroutines")
 add_subdirectory("stl_iterators")
