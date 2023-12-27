@@ -38,4 +38,5 @@ add_subdirectory("command")					# chapter 14
 add_subdirectory("interpreter")				# chapter 15
 add_subdirectory("iterator")				# chapter 16
 add_subdirectory("mediator")				# chapter 17
-add_subdirectory("observer")				# chapter X - Does not compile under windows due to a memory.h issue
+add_subdirectory("memento")					# chapter 18
+add_subdirectory("observer")				# chapter 19 - Does not compile under windows due to a memory.h issue

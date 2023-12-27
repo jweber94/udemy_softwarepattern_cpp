@@ -1,2 +1,2 @@
 # Basic Memento Example
-+ 
++ As long as the state that is saved within the memento is small enough, we can historize the mementos and work with a index based approach to undo and redo operations on the state of an object (to which the memento is associated with)
