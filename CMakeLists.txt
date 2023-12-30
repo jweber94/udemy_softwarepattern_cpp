@@ -41,3 +41,4 @@ add_subdirectory("mediator")				# chapter 17
 add_subdirectory("memento")					# chapter 18
 add_subdirectory("observer")				# chapter 19 - Does not compile under windows due to a memory.h issue
 add_subdirectory("state")					# chapter 20
+add_subdirectory("strategy")				# chapter 21
